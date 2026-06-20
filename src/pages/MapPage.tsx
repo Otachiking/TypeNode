@@ -32,7 +32,7 @@ const TaskNode: React.FC<NodeProps<Node<TaskNodeData>>> = ({ data, selected }) =
   const { task, thread } = data;
   return (
     <div className={`rf-task-node state-${task.state} ${task.isCritical ? 'is-critical' : ''} ${selected ? 'selected' : ''}`}>
-      <Handle type="target" position={Position.Top} />
+      <Handle type="target" position={Position.Left} />
 
       <div className="rf-task-title">{task.title}</div>
 
@@ -52,14 +52,14 @@ const TaskNode: React.FC<NodeProps<Node<TaskNodeData>>> = ({ data, selected }) =
           </span>
         )}
         <span className={`pill pill-state ${task.state}`} style={{ fontSize: '0.5625rem', padding: '1px 5px' }}>
-          {task.state}
+          {task.state === 'ready' ? 'To Do' : task.state}
         </span>
         {task.isCritical && task.state !== 'done' && (
           <span className="pill pill-critical" style={{ fontSize: '0.5625rem', padding: '1px 5px' }}>⚡</span>
         )}
       </div>
 
-      <Handle type="source" position={Position.Bottom} />
+      <Handle type="source" position={Position.Right} />
     </div>
   );
 };
@@ -70,7 +70,7 @@ const nodeTypes = { taskNode: TaskNode };
 function getLayoutedElements(
   nodes: Node<TaskNodeData>[],
   edges: Edge[],
-  direction = 'TB'
+  direction = 'LR'
 ): { nodes: Node<TaskNodeData>[]; edges: Edge[] } {
   const g = new Dagre.graphlib.Graph().setDefaultEdgeLabel(() => ({}));
   g.setGraph({ rankdir: direction, nodesep: 60, ranksep: 80, edgesep: 30 });
@@ -151,6 +151,7 @@ export const MapPage: React.FC = () => {
         id: `e-${dep.id}`,
         source: String(dep.predecessorId),
         target: String(dep.successorId),
+        type: 'smoothstep',
         animated: dep.type === 'completes_with',
         style: {
           strokeDasharray: dep.type === 'starts_with' ? '6 3' : dep.type === 'completes_with' ? '3 3' : undefined,
@@ -219,6 +220,10 @@ export const MapPage: React.FC = () => {
           fitViewOptions={{ padding: 0.3 }}
           minZoom={0.3}
           maxZoom={2}
+          panOnScroll={true}
+          zoomOnScroll={false}
+          panOnDrag={true}
+          nodesDraggable={false}
           proOptions={{ hideAttribution: true }}
         >
           <Background variant={BackgroundVariant.Dots} gap={20} size={1} />

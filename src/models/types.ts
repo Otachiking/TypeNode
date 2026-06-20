@@ -63,6 +63,6 @@ export const RELATIONSHIP_LABELS: Record<RelationshipType, { label: string; desc
 export const STATE_LABELS: Record<TaskState, { label: string; color: string }> = {
   floating: { label: 'Floating', color: 'var(--state-floating)' },
   locked: { label: 'Locked', color: 'var(--state-locked)' },
-  ready: { label: 'Ready', color: 'var(--state-ready)' },
+  ready: { label: 'To Do', color: 'var(--state-ready)' },
   done: { label: 'Done', color: 'var(--state-done)' },
 };
