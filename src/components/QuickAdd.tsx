@@ -4,7 +4,7 @@ import { db } from '../db/database';
 import { recalculateAllStates } from '../engine/stateEngine';
 import { computeAllCriticalPaths } from '../engine/criticalPath';
 import type { RelationshipType } from '../models/types';
-import { Plus, Calendar } from 'lucide-react';
+import { Plus } from 'lucide-react';
 
 interface QuickAddProps {
   showToast: (message: string) => void;

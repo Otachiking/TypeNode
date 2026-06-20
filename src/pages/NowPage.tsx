@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useTasksWithRelations } from '../hooks/useTaskData';
 import { TaskCard } from '../components/TaskCard';
 import { QuickAdd } from '../components/QuickAdd';
@@ -133,7 +133,7 @@ export const NowPage: React.FC<NowPageProps> = ({ showToast }) => {
       {/* Header */}
       <div className="page-header">
         <div className="page-header-text">
-          <h1 className="page-title">Now</h1>
+          <h1 className="page-title">Task</h1>
           <p className="page-subtitle">
             {totalReady} task siap dikerjakan
             {totalCritical > 0 && ` · ${totalCritical} critical`}

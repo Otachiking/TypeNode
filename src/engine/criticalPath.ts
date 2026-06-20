@@ -1,5 +1,5 @@
 import { db } from '../db/database';
-import type { Task, Dependency } from '../models/types';
+import type { Dependency } from '../models/types';
 
 /**
  * Critical Path Engine — Computes Critical Path & Slack per Thread.

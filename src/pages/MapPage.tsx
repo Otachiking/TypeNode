@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   ReactFlow,
   Background,
@@ -18,7 +18,7 @@ import '@xyflow/react/dist/style.css';
 import Dagre from '@dagrejs/dagre';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '../db/database';
-import type { Task, Dependency, Thread } from '../models/types';
+import type { Task, Thread } from '../models/types';
 import { RELATIONSHIP_LABELS } from '../models/types';
 
 // ─── Custom Task Node ───
@@ -185,7 +185,7 @@ export const MapPage: React.FC = () => {
     <div className="map-container">
       {/* Toolbar */}
       <div className="map-toolbar">
-        <span className="map-toolbar-title">Map</span>
+        <span className="map-toolbar-title">Node</span>
         <select
           className="select"
           style={{ width: 'auto', minWidth: '140px', fontSize: 'var(--text-xs)' }}

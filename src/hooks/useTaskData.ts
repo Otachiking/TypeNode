@@ -1,8 +1,7 @@
 import { useState, useCallback } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '../db/database';
-import type { Task, Dependency, Thread, TaskWithRelations } from '../models/types';
-import { canMarkDone } from '../engine/stateEngine';
+import type { Task, TaskWithRelations } from '../models/types';
 
 /**
  * Hook: get all tasks with their relations enriched.

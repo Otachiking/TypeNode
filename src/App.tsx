@@ -4,7 +4,7 @@ import { NowPage } from './pages/NowPage';
 import { MapPage } from './pages/MapPage';
 import { useToast } from './hooks/useTaskData';
 import { seedDatabase, resetAndSeed } from './data/seedData';
-import { Zap, Home, GitBranch, RotateCcw, Sun, Moon } from 'lucide-react';
+import { Zap, ListChecks, GitBranch, RotateCcw, Sun, Moon } from 'lucide-react';
 
 type AppMode = 'capture' | 'now' | 'map';
 
@@ -79,20 +79,20 @@ const App: React.FC = () => {
           className={`nav-item ${mode === 'now' ? 'active' : ''}`}
           onClick={() => setMode('now')}
           id="nav-now"
-          aria-label="Now mode"
+          aria-label="Task mode"
         >
-          <Home size={20} />
-          <span>Now</span>
+          <ListChecks size={20} />
+          <span>Task</span>
         </button>
 
         <button
           className={`nav-item ${mode === 'map' ? 'active' : ''}`}
           onClick={() => setMode('map')}
           id="nav-map"
-          aria-label="Map mode"
+          aria-label="Node mode"
         >
           <GitBranch size={20} />
-          <span>Map</span>
+          <span>Node</span>
         </button>
 
         <div className="nav-util">
